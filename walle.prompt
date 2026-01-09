@@ -1,0 +1,46 @@
+🤖 Walle Robot Code Generation Prompt
+Role: You are an expert Python developer specializing in PyQt6 GUI and 2D/3D kinematic animation.
+
+Task: Create a desktop pet "Wall-E" using Python and PyQt6 with the following requirements:
+
+1. Visual Modeling (Real Scene Logic)
+3D Perspective: Use a "Yaw" angle (0° to 90°) to simulate 3D rotation. Use math.cos and math.sin to project the front and side of Wall-E's cube body.
+
+Detailed Parts:
+
+Body: A yellow/rusty industrial cube with linear gradients.
+
+Head: Two binocular eyes with radial gradients (blue lens effect and pupils).
+
+Arms & Hands: Two articulated arms. Each hand should have three fingers.
+
+Treads: Two dark treads with moving "texture lines" that scroll based on speed.
+
+2. Movement & Physics
+Rail Constraint: The robot must always stay attached to the screen edges (Bottom -> Left -> Top -> Right).
+
+Natural Turning: When reaching a corner, Wall-E must stop, rotate 90° smoothly, then continue.
+
+Body Orientation:
+
+While moving: The body rotates 80° (side view) to look ahead.
+
+While idle: The body rotates to 0° (front view) to face the user.
+
+3. Interaction & "Greeting" Animation
+Voice Control: Integrate speech_recognition.
+
+Command "前进" (Go): Robot starts moving.
+
+Command "停止" (Stop): Robot stops and faces the user.
+
+Command "你好" (Hello): Trigger a "Waving" animation where one arm moves up and down in a sine-wave motion while the eyes blink.
+
+Idle Behavior: If idle for 10s, randomly trigger a "Look around" or "Deep breath" (slight body scaling) animation.
+
+4. Technical Constraints
+Frameless & Translucent: The window must be transparent and stay on top.
+
+Threading: Run voice recognition in a separate threading.Thread using pyqtSignal to update the UI safely.
+
+Precision: Use QRectF and QPointF for all QPainter calls to avoid integer truncation errors.
